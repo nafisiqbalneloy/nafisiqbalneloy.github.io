@@ -66,6 +66,10 @@ section { padding: 56px 0; border-top: 1px solid var(--line); }
 .stat { font-weight: 700; color: var(--ink); }
 
 .thesis { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
+.interests { margin-bottom: 16px; }
+.honors { margin-top: 28px; }
+.honors h3 { font-size: 1rem; margin: 0 0 6px; }
+.honors p { margin: 0 0 20px; color: var(--muted); }
 .thesis h3 { margin-bottom: 10px; }
 .thesis p { margin: 0 0 10px; color: var(--muted); }
 .thesis p:last-child { margin: 0; }
@@ -78,7 +82,7 @@ section { padding: 56px 0; border-top: 1px solid var(--line); }
 .chips span { font-size: .88rem; padding: 4px 12px; border-radius: 99px; border: 1px solid var(--line); }
 
 .timeline { display: grid; gap: 14px; }
-.row { display: grid; grid-template-columns: 140px 1fr; gap: 16px; }
+.row { display: grid; grid-template-columns: 170px 1fr; gap: 16px; }
 .row time { color: var(--muted); font-size: .92rem; padding-top: 2px; }
 .row h3 { font-size: 1.1rem; }
 .row p { margin: 4px 0 0; color: var(--muted); }
@@ -172,30 +176,40 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
     </section>
 
     <section id="research">
-      <div class="sec-head"><h2>Research</h2><span>Final year design project, in progress</span></div>
+      <div class="sec-head"><h2>Research</h2><span>Interests and my final year design project</span></div>
+      <div class="chips interests">
+        <span>Computer vision</span><span>Image processing</span><span>Machine learning</span><span>Deep learning</span><span>NLP</span><span>Trustworthy AI</span><span>Data poisoning</span><span>Retrieval-augmented generation</span>
+      </div>
       <div class="thesis">
-        <h3>Poisoning detection in multilingual RAG</h3>
-        <p>Retrieval-augmented generation systems trust the documents they retrieve. My thesis group studies how a poisoned knowledge base can mislead them, and how to detect it across English, Bangla and Banglish.</p>
-        <p>Interests: robustness of language models, low-resource languages, AI security.</p>
+        <h3>Knowledge-base poisoning detection in multilingual RAG</h3>
+        <p>My thesis direction is AI security for retrieval-augmented generation. These systems trust the documents they retrieve, so a poisoned knowledge base can mislead them. I am studying whether existing poisoning defenses work equally well in English, Bangla and Romanized Bangla (Banglish).</p>
+        <p>Status: literature review in progress, with the exact topic still being finalised under my supervisor. My earlier work on image classification, including the garbage classifier, shaped how I think about data quality and robustness.</p>
       </div>
     </section>
 
     <section id="skills">
       <div class="sec-head"><h2>Skills</h2></div>
       <div class="skills">
-        <div class="skill-card"><h3>Machine learning</h3><div class="chips"><span>Python</span><span>PyTorch</span><span>Computer vision</span><span>NLP</span><span>Model fine-tuning</span></div></div>
-        <div class="skill-card"><h3>Web and backend</h3><div class="chips"><span>JavaScript</span><span>Node.js</span><span>Express</span><span>HTML and CSS</span><span>REST APIs</span></div></div>
-        <div class="skill-card"><h3>Data and tools</h3><div class="chips"><span>MySQL</span><span>SQLite</span><span>Git and GitHub</span><span>Linux</span><span>Figma</span></div></div>
+        <div class="skill-card"><h3>Machine learning</h3><div class="chips"><span>Python</span><span>PyTorch</span><span>Deep learning</span><span>Computer vision</span><span>NLP</span></div></div>
+        <div class="skill-card"><h3>Web and backend</h3><div class="chips"><span>JavaScript</span><span>Node.js</span><span>Express</span><span>Flask</span><span>HTML and CSS</span></div></div>
+        <div class="skill-card"><h3>Data and tools</h3><div class="chips"><span>SQL</span><span>MySQL</span><span>PostgreSQL</span><span>Git and GitHub</span><span>Figma</span></div></div>
         <div class="skill-card"><h3>Core CS</h3><div class="chips"><span>C++</span><span>C</span><span>Java</span><span>Data structures</span><span>Algorithms</span></div></div>
       </div>
     </section>
 
     <section id="journey">
-      <div class="sec-head"><h2>Journey</h2></div>
+      <div class="sec-head"><h2>Education and experience</h2></div>
       <div class="timeline">
         <div class="row"><time>Nov 2026</time><div><h3>Sales Executive, Intelio Labs</h3><p>Joining a Dhaka software startup to help clients adopt web, software and AI solutions.</p></div></div>
-        <div class="row"><time>2026</time><div><h3>Final year design project</h3><p>Researching poisoning detection in multilingual RAG systems.</p></div></div>
-        <div class="row"><time>Ongoing</time><div><h3>BSc in Computer Science and Engineering</h3><p>United International University, Dhaka. Coursework in networks, AI, software engineering and embedded systems.</p></div></div>
+        <div class="row"><time>Jun 2024 – Jan 2025</time><div><h3>Senior Executive of Branding, UIU Entrepreneur Development Forum</h3><p>Worked on branding strategy, communication and the club's visibility on campus.</p></div></div>
+        <div class="row"><time>Sep 2023 – now</time><div><h3>B.Sc. in Computer Science and Engineering, UIU</h3><p>Major in Artificial Intelligence and Data Science. CGPA 3.70 out of 4.00.</p></div></div>
+        <div class="row"><time>2019 – 2022</time><div><h3>HSC, Major General Mahmudul Hasan Adarsha College</h3><p>Science group, GPA 5.00 out of 5.00. Tangail.</p></div></div>
+      </div>
+      <div class="honors">
+        <h3>Recognition</h3>
+        <p>Academic scholarships in trimesters 6, 8 and 9, and academic waivers in trimesters 5 to 9.</p>
+        <h3>Relevant coursework</h3>
+        <div class="chips"><span>Artificial Intelligence</span><span>Data Structures and Algorithms</span><span>Database Management Systems</span><span>Computer Networks</span><span>Software Engineering</span></div>
       </div>
     </section>
 
