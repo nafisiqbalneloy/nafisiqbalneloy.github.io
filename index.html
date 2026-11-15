@@ -4,112 +4,123 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nafis Iqbal Neloy</title>
-<meta name="description" content="Portfolio of Nafis Iqbal Neloy, CSE undergraduate at UIU working on computer vision, NLP and full-stack projects.">
+<meta name="description" content="Nafis Iqbal Neloy, CSE undergraduate at UIU (AI and Data Science). Machine learning, NLP, AI security and full-stack projects.">
+<meta name="theme-color" content="#000000">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* Layout idea: one calm column, big name, projects as an index list with a numbered rail. */
+/* Layout idea: single column academic page, numbered entries, black on white, bold section headings with a one-line subhead. */
 :root {
-  --bg: #f5f6f8; --surface: #ffffff; --ink: #14181f; --muted: #5b6472; --line: #e2e5ea;
-  --accent: #ff5a1f; --accent-ink: #ffffff; --soft: #fff0e9;
+  --bg: #ffffff; --surface: #f5f5f4; --ink: #0a0a0a; --muted: #5d5d5a; --line: #e4e4e1;
+  --btn: #0a0a0a; --btn-ink: #ffffff; --accent: #ff5a1f;
   --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
   --body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) { --bg: #0e1116; --surface: #161a22; --ink: #eef0f4; --muted: #9aa3b2; --line: #262c37; --soft: #2a1a12; color-scheme: dark; }
+  :root:not([data-theme="light"]) { --bg: #0a0a0a; --surface: #151515; --ink: #f2f2f0; --muted: #9b9b96; --line: #262626; --btn: #f2f2f0; --btn-ink: #0a0a0a; color-scheme: dark; }
 }
-:root[data-theme="dark"] { --bg: #0e1116; --surface: #161a22; --ink: #eef0f4; --muted: #9aa3b2; --line: #262c37; --soft: #2a1a12; color-scheme: dark; }
+:root[data-theme="dark"] { --bg: #0a0a0a; --surface: #151515; --ink: #f2f2f0; --muted: #9b9b96; --line: #262626; --btn: #f2f2f0; --btn-ink: #0a0a0a; color-scheme: dark; }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.6 var(--body); -webkit-font-smoothing: antialiased; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.65 var(--body); -webkit-font-smoothing: antialiased; }
 a { color: inherit; }
-.wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
 h1, h2, h3 { font-family: var(--display); line-height: 1.1; margin: 0; text-wrap: balance; }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--btn); color: var(--btn-ink); padding: 8px 14px; border-radius: 8px; z-index: 30; }
+.skip:focus { left: 12px; }
 
-header.nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-.nav .wrap { display: flex; align-items: center; gap: 16px; height: 58px; }
+header.nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.nav .wrap { display: flex; align-items: center; gap: 16px; height: 56px; }
 .logo { font: 800 1.05rem var(--display); text-decoration: none; }
-.logo span { color: var(--accent); }
-.nav nav { margin-left: auto; display: flex; gap: 18px; font-size: .92rem; }
-.nav nav a { text-decoration: none; color: var(--muted); }
+.nav nav { margin-left: auto; display: flex; gap: 18px; font-size: .9rem; }
+.nav nav a { color: var(--muted); text-decoration: none; }
 .nav nav a:hover { color: var(--ink); }
-#theme { background: none; border: 1px solid var(--line); color: var(--ink); border-radius: 99px; width: 36px; height: 36px; cursor: pointer; font-size: 1rem; }
+#theme { background: none; border: 1px solid var(--line); color: var(--ink); border-radius: 99px; width: 34px; height: 34px; cursor: pointer; display: grid; place-items: center; }
 
-.hero { padding: 72px 0 56px; }
-.hello { color: var(--accent); font-weight: 600; margin: 0 0 14px; }
-.hero h1 { font-size: clamp(2.6rem, 9vw, 5rem); font-weight: 800; letter-spacing: -.03em; }
-.hero p.lead { font-size: clamp(1.1rem, 2.4vw, 1.35rem); color: var(--muted); max-width: 34em; margin: 22px 0 0; }
-.hero p.lead b { color: var(--ink); font-weight: 600; }
-.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-weight: 600; text-decoration: none; border: 1px solid var(--line); background: var(--surface); }
-.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
-.btn:hover { transform: translateY(-1px); }
-.facts { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 34px 0 0; padding: 0; list-style: none; color: var(--muted); font-size: .95rem; }
-.facts li::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); margin-right: 8px; }
+.hero { padding: 64px 0 48px; display: grid; grid-template-columns: 132px 1fr; gap: 28px; align-items: center; }
+.avatar { width: 132px; height: 132px; border-radius: 50%; background: var(--ink); color: var(--bg); display: grid; place-items: center; font: 800 2.6rem var(--display); letter-spacing: -.03em; }
+.where { color: var(--muted); font-size: .95rem; margin: 0 0 6px; }
+.hero h1 { font-size: clamp(2.3rem, 8vw, 4rem); font-weight: 800; letter-spacing: -.03em; }
+.role { font-weight: 600; margin: 8px 0 0; }
+.mission { color: var(--muted); margin: 10px 0 0; max-width: 34em; }
+.cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 10px; font-weight: 600; text-decoration: none; border: 1px solid var(--ink); }
+.btn.solid { background: var(--btn); color: var(--btn-ink); }
+.btn:hover { opacity: .85; }
+.currently { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; padding-top: 22px; border-top: 1px solid var(--line); font-size: .93rem; color: var(--muted); }
+.currently b { color: var(--ink); font-weight: 600; }
+.currently .label { text-transform: uppercase; letter-spacing: .08em; font-size: .74rem; font-weight: 600; }
+.pill { border: 1px solid var(--line); border-radius: 99px; padding: 4px 14px; background: var(--surface); }
 
-section { padding: 56px 0; border-top: 1px solid var(--line); }
-.sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 28px; }
-.sec-head h2 { font-size: 1.9rem; font-weight: 700; }
-.sec-head span { color: var(--muted); font-size: .95rem; }
+section { padding: 60px 0; border-top: 1px solid var(--line); }
+.sec-head { margin-bottom: 30px; }
+.sec-head h2 { font-size: clamp(1.8rem, 5vw, 2.5rem); font-weight: 800; letter-spacing: -.02em; }
+.sec-head p { color: var(--muted); margin: 8px 0 0; }
 
-.projects { display: grid; gap: 16px; }
-.project { display: grid; grid-template-columns: 56px 1fr; gap: 6px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
-.project .num { font: 800 1.6rem var(--display); color: var(--accent); }
-.project h3 { font-size: 1.35rem; font-weight: 700; }
-.project p { margin: 8px 0 0; color: var(--muted); }
-.project .meta { grid-column: 2; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 14px; }
-.tag { font-size: .8rem; padding: 3px 10px; border-radius: 99px; background: var(--soft); color: var(--accent); font-weight: 600; }
-.project a.go { margin-left: auto; font-weight: 600; text-decoration: none; color: var(--ink); border-bottom: 2px solid var(--accent); }
-.stat { font-weight: 700; color: var(--ink); }
+.about h3.sub-h { font-size: 1.1rem; margin: 26px 0 10px; }
+.about h3 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 700; margin-bottom: 14px; max-width: 22em; }
+.about p { color: var(--muted); max-width: 40em; margin: 0 0 14px; }
+ul.plain { margin: 0; padding-left: 1.2em; }
+ul.plain li { margin: 5px 0; }
+.interests { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 28px; margin-top: 8px; }
 
-.thesis { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
-.interests { margin-bottom: 16px; }
-.honors { margin-top: 28px; }
-.honors h3 { font-size: 1rem; margin: 0 0 6px; }
-.honors p { margin: 0 0 20px; color: var(--muted); }
-.thesis h3 { margin-bottom: 10px; }
-.thesis p { margin: 0 0 10px; color: var(--muted); }
-.thesis p:last-child { margin: 0; }
+.entry { display: grid; grid-template-columns: 52px 1fr auto; gap: 4px 18px; padding: 22px 0; border-top: 1px solid var(--line); }
+.entry:first-of-type { border-top: 0; padding-top: 0; }
+.entry .no { font: 800 1.3rem var(--display); color: var(--muted); }
+.entry h3 { font-size: 1.2rem; font-weight: 700; }
+.entry .sub { color: var(--muted); margin: 2px 0 0; }
+.entry time { color: var(--muted); font-size: .9rem; white-space: nowrap; padding-top: 4px; }
+.entry ul { grid-column: 2 / -1; margin: 8px 0 0; padding-left: 1.2em; color: var(--muted); }
+.entry .note { grid-column: 2 / -1; margin: 6px 0 0; color: var(--muted); }
 
-.skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-@media (max-width: 560px) { .skills { grid-template-columns: 1fr; } }
-.skill-card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 20px; }
-.skill-card h3 { font-size: 1rem; margin-bottom: 12px; }
-.chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.chips span { font-size: .88rem; padding: 4px 12px; border-radius: 99px; border: 1px solid var(--line); }
+.cards { display: grid; gap: 16px; }
+.card { border: 1px solid var(--line); border-radius: 16px; padding: 24px; background: var(--surface); }
+.card h3 { font-size: 1.3rem; font-weight: 700; }
+.card p { color: var(--muted); margin: 8px 0 12px; }
+.card ul { margin: 0 0 16px; padding-left: 1.2em; font-size: .95rem; }
+.card .stat { font-weight: 600; margin-bottom: 8px; }
+.card a.go { font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--ink); }
 
-.timeline { display: grid; gap: 14px; }
-.row { display: grid; grid-template-columns: 170px 1fr; gap: 16px; }
-.row time { color: var(--muted); font-size: .92rem; padding-top: 2px; }
-.row h3 { font-size: 1.1rem; }
-.row p { margin: 4px 0 0; color: var(--muted); }
+.toolkit { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px 32px; }
+.toolkit h3 { font-size: 1rem; margin-bottom: 8px; }
+.toolkit ul { margin: 0; padding-left: 1.2em; color: var(--muted); }
 
-.contact { text-align: left; }
-.contact p { color: var(--muted); max-width: 32em; margin: 0 0 22px; }
-footer { padding: 28px 0 60px; color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line); }
+.awards { list-style: none; margin: 0; padding: 0; }
+.awards li { padding: 14px 0; border-top: 1px solid var(--line); }
+.awards li:first-child { border-top: 0; padding-top: 0; }
+.awards small { display: block; color: var(--muted); font-size: .92rem; }
+
+.contact p { color: var(--muted); max-width: 34em; margin: 0 0 20px; }
+.links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.links a { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border: 1px solid var(--line); border-radius: 10px; text-decoration: none; font-weight: 500; background: var(--surface); }
+.links a:hover { border-color: var(--ink); }
+.links svg { width: 18px; height: 18px; fill: currentColor; }
+footer { border-top: 1px solid var(--line); padding: 26px 0 56px; color: var(--muted); font-size: .9rem; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
 
 a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
-@media (max-width: 560px) {
+@media (max-width: 620px) {
   .nav nav { display: none; }
   #theme { margin-left: auto; }
-  .row { grid-template-columns: 1fr; gap: 2px; }
-  .project { grid-template-columns: 1fr; }
-  .project .meta { grid-column: 1; }
-  .project a.go { margin-left: 0; }
-  .hero { padding-top: 48px; }
+  .hero { grid-template-columns: 1fr; gap: 20px; padding-top: 40px; }
+  .avatar { width: 96px; height: 96px; font-size: 2rem; }
+  .entry { grid-template-columns: 40px 1fr; }
+  .entry time { grid-column: 2; padding: 0; }
+  .interests { grid-template-columns: 1fr; }
 }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn:hover { transform: none; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
 </head>
 <body>
+<a class="skip" href="#about">Skip to content</a>
 <header class="nav">
   <div class="wrap">
-    <a class="logo" href="#top">Neloy<span>.</span></a>
+    <a class="logo" href="#top">Neloy</a>
     <nav aria-label="Sections">
-      <a href="#projects">Projects</a><a href="#research">Research</a><a href="#skills">Skills</a><a href="#journey">Journey</a><a href="#contact">Contact</a>
+      <a href="#about">About</a><a href="#education">Education</a><a href="#experience">Experience</a><a href="#research">Research</a><a href="#projects">Projects</a><a href="#toolkit">Toolkit</a><a href="#awards">Awards</a><a href="#contact">Contact</a>
     </nav>
     <button id="theme" type="button" aria-label="Switch colour theme"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg></button>
   </div>
@@ -118,113 +129,122 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
 <main id="top">
   <div class="wrap">
     <div class="hero">
-      <p class="hello">Hi, I'm</p>
-      <h1>Nafis Iqbal Neloy</h1>
-      <p class="lead">CSE undergraduate at <b>United International University</b>. I build <b>computer vision</b> and <b>language</b> models, and the full-stack apps around them, from the first idea to something people can use.</p>
-      <div class="cta">
-        <a class="btn primary" href="#projects">See my projects</a>
-        <a class="btn" href="https://github.com/nafisiqbalneloy">GitHub</a>
-        <a class="btn" href="https://www.linkedin.com/in/nafisiqbalneloy/">LinkedIn</a>
+      <div class="avatar" aria-hidden="true">NN</div>
+      <div>
+        <p class="where">Dhaka, Bangladesh</p>
+        <h1>Nafis Iqbal Neloy</h1>
+        <p class="role">CSE undergraduate · Artificial Intelligence and Data Science</p>
+        <p class="mission">I build and study machine learning systems, with a focus on making them robust and trustworthy.</p>
+        <div class="cta">
+          <a class="btn solid" href="#contact">Get in touch</a>
+          <a class="btn" href="https://github.com/nafisiqbalneloy">GitHub</a>
+        </div>
       </div>
-      <ul class="facts">
-        <li>Dhaka, Bangladesh</li>
-        <li>Deep learning, NLP, AI security</li>
-        <li>English and Bangla</li>
-      </ul>
+      <div class="currently">
+        <span class="label">Currently</span>
+        <span class="pill"><b>B.Sc. CSE</b> · United International University</span>
+        <span class="pill"><b>Sales Executive</b> · Intelio Labs</span>
+      </div>
     </div>
 
-    <section id="projects">
-      <div class="sec-head"><h2>Projects</h2><span>Each one is a public repo with a README</span></div>
-      <div class="projects">
-        <article class="project">
-          <div class="num">01</div>
-          <div>
-            <h3>Garbage Classification</h3>
-            <p>Fine-tuned EfficientNet-B6 that sorts waste photos into 10 classes, with a Gradio demo anyone can try.</p>
-          </div>
-          <div class="meta"><span class="stat">94.18% test accuracy</span><span class="tag">PyTorch</span><span class="tag">Gradio</span><span class="tag">Computer vision</span>
-            <a class="go" href="https://github.com/nafisiqbalneloy/Garbage-Classification-Using-Deep-Learning">View repo →</a></div>
-        </article>
-        <article class="project">
-          <div class="num">02</div>
-          <div>
-            <h3>CampusCruise</h3>
-            <p>Students-only bike ride-sharing for UIU. Started as a full SRS and Figma prototype, now a working app: verified accounts, ride posting and matching, driver approval, fare chat, ratings and an admin dashboard. No third-party dependencies, 11 API tests.</p>
-          </div>
-          <div class="meta"><span class="tag">Node.js</span><span class="tag">SQLite</span><span class="tag">REST API</span><span class="tag">SRS + Figma</span>
-            <a class="go" href="https://github.com/nafisiqbalneloy/CampusCruise">View repo →</a></div>
-        </article>
-        <article class="project">
-          <div class="num">03</div>
-          <div>
-            <h3>CropVerse</h3>
-            <p>A farmer-to-buyer marketplace with chat, disease alerts and price trends, built around relational design: database triggers and transactions keep orders consistent.</p>
-          </div>
-          <div class="meta"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">MySQL</span>
-            <a class="go" href="https://github.com/nafisiqbalneloy/CropVerse">View repo →</a></div>
-        </article>
-        <article class="project">
-          <div class="num">04</div>
-          <div>
-            <h3>GaanBox</h3>
-            <p>Share a song and the story behind it. A shared community feed with likes and reports, light and dark themes, ES-module front end and an automated test suite.</p>
-          </div>
-          <div class="meta"><span class="tag">JavaScript</span><span class="tag">Node.js</span><span class="tag">node:test</span>
-            <a class="go" href="https://github.com/nafisiqbalneloy/GaanBox">View repo →</a></div>
-        </article>
+    <section id="about" class="about">
+      <div class="sec-head"><h2>About</h2><p>What I work on and why</p></div>
+      <h3>I like finding out how machine learning systems fail, and how to make them dependable.</h3>
+      <p>I am a Computer Science and Engineering student at UIU, majoring in Artificial Intelligence and Data Science. I started with image classification and now work on language models and AI security, including how retrieval-augmented systems can be misled by poisoned data.</p>
+      <p>Alongside research I build full-stack projects, from a farmer marketplace to a campus ride-sharing app, because a model only matters once someone can use it.</p>
+      <h3 class="sub-h">Research interests</h3>
+      <div class="interests">
+        <ul class="plain"><li>Computer vision and image processing</li><li>Machine learning and deep learning</li><li>Natural language processing</li></ul>
+        <ul class="plain"><li>Trustworthy AI</li><li>Data poisoning</li><li>Retrieval-augmented generation (RAG)</li></ul>
       </div>
+    </section>
+
+    <section id="education">
+      <div class="sec-head"><h2>Education</h2><p>Where I studied</p></div>
+      <div class="entry"><span class="no">01</span><div><h3>B.Sc. in Computer Science and Engineering</h3><p class="sub">United International University, Dhaka · Major in Artificial Intelligence and Data Science</p></div><time>Sep 2023 – Present</time><p class="note">CGPA 3.70 / 4.00</p></div>
+      <div class="entry"><span class="no">02</span><div><h3>Higher Secondary Certificate, Science</h3><p class="sub">Major General Mahmudul Hasan Adarsha College, Tangail</p></div><time>Jun 2019 – Feb 2022</time><p class="note">GPA 5.00 / 5.00</p></div>
+      <div class="entry"><span class="no">03</span><div><h3>Secondary School Certificate, Science</h3><p class="sub">Police Lines Adarsha High School, Tangail</p></div><time>Jan 2014 – May 2019</time></div>
+    </section>
+
+    <section id="experience">
+      <div class="sec-head"><h2>Experience</h2><p>Where I have worked</p></div>
+      <div class="entry"><span class="no">01</span><div><h3>Sales Executive</h3><p class="sub">Intelio Labs, software startup · Remote</p></div><time>Nov 2026 – Present</time>
+        <ul><li>Identify and qualify prospects for web, software and AI projects.</li><li>Present product demos and prepare proposals for clients.</li></ul></div>
+      <div class="entry"><span class="no">02</span><div><h3>Senior Executive of Branding</h3><p class="sub">UIU Entrepreneur Development Forum, Dhaka</p></div><time>Jun 2024 – Jan 2025</time>
+        <ul><li>Contributed to branding strategy, communication and the club's visibility on campus.</li><li>Supported marketing initiatives for club events.</li></ul></div>
     </section>
 
     <section id="research">
-      <div class="sec-head"><h2>Research</h2><span>Interests and my final year design project</span></div>
-      <div class="chips interests">
-        <span>Computer vision</span><span>Image processing</span><span>Machine learning</span><span>Deep learning</span><span>NLP</span><span>Trustworthy AI</span><span>Data poisoning</span><span>Retrieval-augmented generation</span>
-      </div>
-      <div class="thesis">
+      <div class="sec-head"><h2>Research</h2><p>Final year design project, in progress</p></div>
+      <div class="card">
         <h3>Knowledge-base poisoning detection in multilingual RAG</h3>
-        <p>My thesis direction is AI security for retrieval-augmented generation. These systems trust the documents they retrieve, so a poisoned knowledge base can mislead them. I am studying whether existing poisoning defenses work equally well in English, Bangla and Romanized Bangla (Banglish).</p>
-        <p>Status: literature review in progress, with the exact topic still being finalised under my supervisor. My earlier work on image classification, including the garbage classifier, shaped how I think about data quality and robustness.</p>
+        <p>Retrieval-augmented generation systems trust the documents they retrieve, so a poisoned knowledge base can mislead them. My thesis direction studies whether existing poisoning defenses work equally well in English, Bangla and Romanized Bangla (Banglish).</p>
+        <ul><li>Status: literature review in progress, topic being finalised with my supervisor</li><li>Areas: AI security, adversarial machine learning, low-resource languages</li></ul>
       </div>
     </section>
 
-    <section id="skills">
-      <div class="sec-head"><h2>Skills</h2></div>
-      <div class="skills">
-        <div class="skill-card"><h3>Machine learning</h3><div class="chips"><span>Python</span><span>PyTorch</span><span>Deep learning</span><span>Computer vision</span><span>NLP</span></div></div>
-        <div class="skill-card"><h3>Web and backend</h3><div class="chips"><span>JavaScript</span><span>Node.js</span><span>Express</span><span>Flask</span><span>HTML and CSS</span></div></div>
-        <div class="skill-card"><h3>Data and tools</h3><div class="chips"><span>SQL</span><span>MySQL</span><span>PostgreSQL</span><span>Git and GitHub</span><span>Figma</span></div></div>
-        <div class="skill-card"><h3>Core CS</h3><div class="chips"><span>C++</span><span>C</span><span>Java</span><span>Data structures</span><span>Algorithms</span></div></div>
+    <section id="projects">
+      <div class="sec-head"><h2>Selected projects</h2><p>Public repositories with READMEs</p></div>
+      <div class="cards">
+        <article class="card">
+          <h3>Garbage Classification</h3>
+          <p>Fine-tuned an EfficientNet-B6 model that sorts waste photos into 10 classes, with a Gradio demo.</p>
+          <div class="stat">94.18% test accuracy</div>
+          <ul><li>PyTorch, Gradio</li><li>Computer vision, transfer learning</li></ul>
+          <a class="go" href="https://github.com/nafisiqbalneloy/Garbage-Classification-Using-Deep-Learning">View repository →</a>
+        </article>
+        <article class="card">
+          <h3>CampusCruise</h3>
+          <p>Students-only bike ride-sharing for UIU. It began as a full SRS and Figma prototype and is now a working app with verified accounts, ride matching, driver approval, fare chat, ratings and an admin dashboard.</p>
+          <ul><li>Node.js, SQLite, REST API, no third-party dependencies</li><li>11 automated API tests</li></ul>
+          <a class="go" href="https://github.com/nafisiqbalneloy/CampusCruise">View repository →</a>
+        </article>
+        <article class="card">
+          <h3>CropVerse</h3>
+          <p>A farmer-to-buyer marketplace with chat, disease alerts and price trends. Database triggers and transactions keep orders consistent.</p>
+          <ul><li>Node.js, Express, MySQL</li><li>Relational design</li></ul>
+          <a class="go" href="https://github.com/nafisiqbalneloy/CropVerse">View repository →</a>
+        </article>
+        <article class="card">
+          <h3>GaanBox</h3>
+          <p>Share a song and the story behind it. A community feed with likes and reports, light and dark themes and an automated test suite.</p>
+          <ul><li>JavaScript (ES modules), Node.js</li><li>node:test</li></ul>
+          <a class="go" href="https://github.com/nafisiqbalneloy/GaanBox">View repository →</a>
+        </article>
       </div>
     </section>
 
-    <section id="journey">
-      <div class="sec-head"><h2>Education and experience</h2></div>
-      <div class="timeline">
-        <div class="row"><time>Nov 2026</time><div><h3>Sales Executive, Intelio Labs</h3><p>Joining a Dhaka software startup to help clients adopt web, software and AI solutions.</p></div></div>
-        <div class="row"><time>Jun 2024 – Jan 2025</time><div><h3>Senior Executive of Branding, UIU Entrepreneur Development Forum</h3><p>Worked on branding strategy, communication and the club's visibility on campus.</p></div></div>
-        <div class="row"><time>Sep 2023 – now</time><div><h3>B.Sc. in Computer Science and Engineering, UIU</h3><p>Major in Artificial Intelligence and Data Science. CGPA 3.70 out of 4.00.</p></div></div>
-        <div class="row"><time>2019 – 2022</time><div><h3>HSC, Major General Mahmudul Hasan Adarsha College</h3><p>Science group, GPA 5.00 out of 5.00. Tangail.</p></div></div>
+    <section id="toolkit">
+      <div class="sec-head"><h2>Toolkit</h2><p>What I work with</p></div>
+      <div class="toolkit">
+        <div><h3>Programming</h3><ul><li>Python</li><li>C and C++</li><li>Java</li><li>JavaScript</li><li>SQL</li></ul></div>
+        <div><h3>Machine learning</h3><ul><li>PyTorch</li><li>Deep learning</li><li>Computer vision</li><li>Natural language processing</li></ul></div>
+        <div><h3>Frameworks</h3><ul><li>Flask</li><li>Node.js and Express</li></ul></div>
+        <div><h3>Databases</h3><ul><li>MySQL</li><li>PostgreSQL</li><li>SQLite</li></ul></div>
+        <div><h3>Tools</h3><ul><li>Git and GitHub</li><li>VS Code</li><li>Figma</li></ul></div>
+        <div><h3>Soft skills</h3><ul><li>Communication</li><li>Leadership</li><li>Teamwork</li></ul></div>
       </div>
-      <div class="honors">
-        <h3>Recognition</h3>
-        <p>Academic scholarships in trimesters 6, 8 and 9, and academic waivers in trimesters 5 to 9.</p>
-        <h3>Relevant coursework</h3>
-        <div class="chips"><span>Artificial Intelligence</span><span>Data Structures and Algorithms</span><span>Database Management Systems</span><span>Computer Networks</span><span>Software Engineering</span></div>
-      </div>
+    </section>
+
+    <section id="awards">
+      <div class="sec-head"><h2>Awards</h2><p>Recognition at UIU</p></div>
+      <ul class="awards">
+        <li>Academic scholarships<small>Trimesters 6, 8 and 9</small></li>
+        <li>Academic tuition waivers<small>Trimesters 5, 6, 7, 8 and 9</small></li>
+      </ul>
     </section>
 
     <section id="contact" class="contact">
-      <div class="sec-head"><h2>Let's talk</h2></div>
-      <p>Open to conversations about machine learning, research and building useful software. The best ways to reach me are LinkedIn and email.</p>
-      <div class="cta">
-        <a class="btn primary" href="mailto:nafisneloy0509@gmail.com">nafisneloy0509@gmail.com</a>
-        <a class="btn" href="https://www.linkedin.com/in/nafisiqbalneloy/">LinkedIn</a>
-        <a class="btn" href="https://github.com/nafisiqbalneloy">GitHub</a>
+      <div class="sec-head"><h2>Contact</h2><p>Let's talk about machine learning, research or building software</p></div>
+      <a class="btn solid" href="mailto:nafisneloy0509@gmail.com">nafisneloy0509@gmail.com</a>
+      <div class="links">
+        <a href="https://github.com/nafisiqbalneloy"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.05-.49.05-.49.8.06 1.23.83 1.23.83.72 1.22 1.88.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
+        <a href="https://www.linkedin.com/in/nafisiqbalneloy/"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M0 1.15C0 .52.52 0 1.17 0h13.66C15.48 0 16 .52 16 1.15v13.7c0 .63-.52 1.15-1.17 1.15H1.17C.52 16 0 15.48 0 14.85zM4.94 13.4V6.2H2.55v7.2zM3.75 5.2c.83 0 1.35-.55 1.35-1.24-.02-.7-.52-1.24-1.33-1.24s-1.35.54-1.35 1.24c0 .69.52 1.24 1.31 1.24zM13.4 13.4V9.27c0-2.2-1.18-3.23-2.75-3.23-1.27 0-1.84.7-2.16 1.19V6.2H6.1c.03.68 0 7.2 0 7.2h2.39V9.38c0-.21.01-.43.08-.58.17-.43.56-.88 1.22-.88.86 0 1.2.66 1.2 1.62v3.86z"/></svg>LinkedIn</a>
       </div>
     </section>
   </div>
 </main>
-<footer><div class="wrap">© <span id="yr">2026</span> Nafis Iqbal Neloy · Dhaka, Bangladesh</div></footer>
+<footer><div class="wrap"><span>© <span id="yr">2026</span> Nafis Iqbal Neloy</span><a href="#top">Back to top</a></div></footer>
 
 <script>
 (function () {
