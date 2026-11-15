@@ -41,7 +41,7 @@ header.nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srg
 #theme { background: none; border: 1px solid var(--line); color: var(--ink); border-radius: 99px; width: 34px; height: 34px; cursor: pointer; display: grid; place-items: center; }
 
 .hero { padding: 64px 0 48px; display: grid; grid-template-columns: 132px 1fr; gap: 28px; align-items: center; }
-.avatar { width: 132px; height: 132px; border-radius: 50%; background: var(--ink); color: var(--bg); display: grid; place-items: center; font: 800 2.6rem var(--display); letter-spacing: -.03em; }
+.avatar { width: 132px; height: 132px; border-radius: 50%; object-fit: cover; background: var(--surface); }
 .where { color: var(--muted); font-size: .95rem; margin: 0 0 6px; }
 .hero h1 { font-size: clamp(2.3rem, 8vw, 4rem); font-weight: 800; letter-spacing: -.03em; }
 .role { font-weight: 600; margin: 8px 0 0; }
@@ -106,7 +106,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
   .nav nav { display: none; }
   #theme { margin-left: auto; }
   .hero { grid-template-columns: 1fr; gap: 20px; padding-top: 40px; }
-  .avatar { width: 96px; height: 96px; font-size: 2rem; }
+  .avatar { width: 96px; height: 96px; }
   .entry { grid-template-columns: 40px 1fr; }
   .entry time { grid-column: 2; padding: 0; }
   .interests { grid-template-columns: 1fr; }
@@ -129,7 +129,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
 <main id="top">
   <div class="wrap">
     <div class="hero">
-      <div class="avatar" aria-hidden="true">NN</div>
+      <img class="avatar" src="photo.jpg" alt="Portrait of Nafis Iqbal Neloy" width="132" height="132">
       <div>
         <p class="where">Dhaka, Bangladesh</p>
         <h1>Nafis Iqbal Neloy</h1>
