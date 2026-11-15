@@ -35,12 +35,12 @@ h1, h2, h3 { font-family: var(--display); line-height: 1.1; margin: 0; text-wrap
 header.nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
 .nav .wrap { display: flex; align-items: center; gap: 16px; height: 56px; }
 .logo { font: 800 1.05rem var(--display); text-decoration: none; }
-.nav nav { margin-left: auto; display: flex; gap: 18px; font-size: .9rem; }
+.nav nav { margin-left: 0; display: flex; gap: 18px; font-size: .9rem; }
 .nav nav a { color: var(--muted); text-decoration: none; }
 .nav nav a:hover { color: var(--ink); }
-#theme { background: none; border: 1px solid var(--line); color: var(--ink); border-radius: 99px; width: 34px; height: 34px; cursor: pointer; display: grid; place-items: center; }
+#theme { margin-left: auto; background: none; border: 1px solid var(--line); color: var(--ink); border-radius: 99px; width: 34px; height: 34px; cursor: pointer; display: grid; place-items: center; }
 
-.hero { padding: 56px 0 44px; display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; }
+.hero { padding: 56px 0 44px; display: grid; grid-template-columns: 1.35fr 1fr; gap: 40px; align-items: center; }
 .hero-text { min-width: 0; }
 .photo { margin: 0; position: relative; justify-self: end; width: 100%; max-width: 320px; }
 .photo img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; object-position: 50% 32%; border-radius: 28px; background: var(--surface); position: relative; z-index: 1; }
@@ -52,6 +52,7 @@ header.nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srg
 .role { font-weight: 600; margin: 14px 0 0; }
 .mission { color: var(--muted); margin: 10px 0 0; max-width: 30em; font-size: 1.05rem; }
 .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.cta .btn { padding: 11px 16px; }
 .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 10px; font-weight: 600; text-decoration: none; border: 1px solid var(--ink); }
 .btn.solid { background: var(--btn); color: var(--btn-ink); }
 .btn:hover { opacity: .85; }
@@ -95,7 +96,7 @@ ul.plain li { margin: 5px 0; }
 .status { display: inline-block; font-size: .8rem; font-weight: 600; padding: 3px 12px; border-radius: 99px; background: var(--soft, #fff0e9); color: #b43a0a; margin-bottom: 12px; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .status { background: #2a1a12; color: #ff9a73; } }
 :root[data-theme="dark"] .status { background: #2a1a12; color: #ff9a73; }
-.cards { display: grid; gap: 16px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 16px; }
 .card { border: 1px solid var(--line); border-radius: 16px; padding: 24px; background: var(--surface); }
 .card h3 { font-size: 1.3rem; font-weight: 700; }
 .card p { color: var(--muted); margin: 8px 0 12px; }
@@ -134,12 +135,11 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
 </style>
 </head>
 <body>
-<a class="skip" href="#about">Skip to content</a>
+<a class="skip" href="#projects">Skip to content</a>
 <header class="nav">
   <div class="wrap">
-    <a class="logo" href="#top">Neloy</a>
     <nav aria-label="Sections">
-      <a href="#about">About</a><a href="#education">Education</a><a href="#experience">Experience</a><a href="#research">Research</a><a href="#projects">Projects</a><a href="#toolkit">Toolkit</a><a href="#awards">Awards</a><a href="#contact">Contact</a>
+      <a href="#projects">Projects</a><a href="#about">About</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
     </nav>
     <button id="theme" type="button" aria-label="Switch colour theme"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg></button>
   </div>
@@ -151,68 +151,19 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
       <div class="hero-text">
         <p class="where">Dhaka, Bangladesh</p>
         <h1>Nafis Iqbal <span>Neloy</span></h1>
-        <p class="role">CSE undergraduate · AI and Data Science · UIU</p>
-        <p class="mission">I study how poisoned knowledge can mislead retrieval-augmented language models, and whether defenses still work in Bangla and Banglish.</p>
+        <p class="role">CSE student · Sales Executive at Intelio Labs</p>
+        <p class="mission">I build machine learning and full-stack projects, and I'm learning something new with every one. Below is what I've made so far.</p>
         <div class="cta">
-          <a class="btn solid" href="#contact">Get in touch</a>
-          <a class="btn" href="#research">My research</a>
+          <a class="btn solid" href="#projects">See my projects</a>
+          <a class="btn" href="#contact">Get in touch</a>
           <a class="btn" href="https://github.com/nafisiqbalneloy">GitHub</a>
         </div>
       </div>
       <figure class="photo"><img src="photo.jpg" alt="Portrait of Nafis Iqbal Neloy" width="720" height="925"></figure>
-      <div class="currently">
-        <span class="label">Currently</span>
-        <span class="pill"><b>B.Sc. CSE</b> · United International University</span>
-        <span class="pill"><b>Sales Executive</b> · Intelio Labs</span>
-      </div>
     </div>
 
-    <section id="about" class="about">
-      <div class="sec-head"><h2>About</h2><p>What I work on and why</p></div>
-      <h3>Language models are only as trustworthy as the documents they read.</h3>
-      <p>I am a Computer Science and Engineering student at UIU, majoring in Artificial Intelligence and Data Science. My final year design project looks at what happens when the knowledge base behind a retrieval-augmented system is quietly corrupted, and whether detection methods built for English hold up for Bangla and Romanized Bangla.</p>
-      <p>Alongside research I build full-stack projects, from a farmer marketplace to a campus ride-sharing app, because ideas matter more once someone can use them.</p>
-      <h3 class="sub-h">Research interests</h3>
-      <div class="interests">
-        <ul class="plain"><li>Knowledge-base poisoning in RAG</li><li>Poisoning detection and defense</li><li>AI security and adversarial machine learning</li></ul>
-        <ul class="plain"><li>Multilingual and low-resource NLP</li><li>Bangla and Romanized Bangla (Banglish)</li><li>Reproducible, honest evaluation</li></ul>
-      </div>
-    </section>
-
-    <section id="education">
-      <div class="sec-head"><h2>Education</h2><p>Where I studied</p></div>
-      <div class="entry"><span class="tile" aria-hidden="true">UIU</span><div><h3>B.Sc. in Computer Science and Engineering</h3><p class="sub">United International University, Dhaka · Major in Artificial Intelligence and Data Science</p></div><time>Sep 2023 – Present</time><p class="note">CGPA 3.70 / 4.00</p></div>
-      <div class="entry"><span class="tile" aria-hidden="true">MG</span><div><h3>Higher Secondary Certificate, Science</h3><p class="sub">Major General Mahmudul Hasan Adarsha College, Tangail</p></div><time>Jun 2019 – Feb 2022</time><p class="note">GPA 5.00 / 5.00</p></div>
-      <div class="entry"><span class="tile" aria-hidden="true">PL</span><div><h3>Secondary School Certificate, Science</h3><p class="sub">Police Lines Adarsha High School, Tangail</p></div><time>Jan 2014 – May 2019</time></div>
-    </section>
-
-    <section id="experience">
-      <div class="sec-head"><h2>Experience</h2><p>Where I have worked</p></div>
-      <div class="entry"><span class="tile" aria-hidden="true">IL</span><div><h3>Sales Executive</h3><p class="sub">Intelio Labs, software startup · Remote</p></div><time>Nov 2026 – Present</time>
-        <ul><li>Identify and qualify prospects for web, software and AI projects.</li><li>Present product demos and prepare proposals for clients.</li></ul></div>
-      <div class="entry"><span class="tile" aria-hidden="true">ED</span><div><h3>Senior Executive of Branding</h3><p class="sub">UIU Entrepreneur Development Forum, Dhaka</p></div><time>Jun 2024 – Jan 2025</time>
-        <ul><li>Contributed to branding strategy, communication and the club's visibility on campus.</li><li>Supported marketing initiatives for club events.</li></ul></div>
-    </section>
-
-    <section id="research">
-      <div class="sec-head"><h2>Research</h2><p>Final year design project</p></div>
-      <div class="rq">
-        <span class="status">In progress · literature review</span>
-        <h3>Poisoning detection in multilingual RAG</h3>
-        <p class="q">Do existing RAG poisoning defenses work equally well in English, Bangla and Banglish?</p>
-        <p>A retrieval-augmented system trusts the documents it finds. If an attacker slips misleading text into that knowledge base, the model can give wrong answers with confidence. Most defenses are tested in English only. The same word can be written in three ways, so language and script may change what gets retrieved and what gets caught.</p>
-        <div class="forms" aria-label="One word, three forms">
-          <span><b>good</b><small>English</small></span>
-          <span><b>ভালো</b><small>Bangla</small></span>
-          <span><b>bhalo / valo</b><small>Banglish</small></span>
-        </div>
-        <div class="flow" aria-label="Planned pipeline"><i>Clean RAG</i> → <i>Controlled poisoning</i> → <i>Retrieval</i> → <i>Detection</i> → <i>Evaluation</i></div>
-        <p style="margin-top:18px;font-size:.92rem">Final topic, datasets, attack and defense are still being chosen with our supervisor. This page will be updated as the work takes shape.</p>
-      </div>
-    </section>
-
     <section id="projects">
-      <div class="sec-head"><h2>Selected projects</h2><p>Public repositories with READMEs</p></div>
+      <div class="sec-head"><h2>Projects</h2><p>Things I've built, all on GitHub</p></div>
       <div class="cards">
         <article class="card">
           <h3>Garbage Classification</h3>
@@ -242,8 +193,30 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
       </div>
     </section>
 
-    <section id="toolkit">
-      <div class="sec-head"><h2>Toolkit</h2><p>What I work with</p></div>
+    <section id="about" class="about">
+      <div class="sec-head"><h2>About</h2><p>A short intro</p></div>
+      <p>I'm a Computer Science and Engineering student at UIU, majoring in Artificial Intelligence and Data Science. I learn best by building, so most of what I know comes from projects: an image classifier, a farmer marketplace, a campus bike-sharing app and a music-sharing app.</p>
+      <p>In November 2026 I started as a Sales Executive at Intelio Labs, a software startup, where I work with clients and projects instead of just code.</p>
+      <p>I'm also at the very start of my final year project, in a group of five, on the security of retrieval-augmented language models, including Bangla text. We're still reading papers, so there's nothing to show yet.</p>
+    </section>
+
+    <section id="experience">
+      <div class="sec-head"><h2>Experience</h2><p>Where I have worked</p></div>
+      <div class="entry"><span class="tile" aria-hidden="true">IL</span><div><h3>Sales Executive</h3><p class="sub">Intelio Labs, software startup · Remote</p></div><time>Nov 2026 – Present</time>
+        <ul><li>Identify and qualify prospects for web, software and AI projects.</li><li>Present product demos and prepare proposals for clients.</li></ul></div>
+      <div class="entry"><span class="tile" aria-hidden="true">ED</span><div><h3>Senior Executive of Branding</h3><p class="sub">UIU Entrepreneur Development Forum, Dhaka</p></div><time>Jun 2024 – Jan 2025</time>
+        <ul><li>Contributed to branding strategy, communication and the club's visibility on campus.</li><li>Supported marketing initiatives for club events.</li></ul></div>
+    </section>
+
+    <section id="education">
+      <div class="sec-head"><h2>Education</h2><p>Where I studied</p></div>
+      <div class="entry"><span class="tile" aria-hidden="true">UIU</span><div><h3>B.Sc. in Computer Science and Engineering</h3><p class="sub">United International University, Dhaka · Major in Artificial Intelligence and Data Science</p></div><time>Sep 2023 – Present</time><p class="note">CGPA 3.70 / 4.00</p></div>
+      <div class="entry"><span class="tile" aria-hidden="true">MG</span><div><h3>Higher Secondary Certificate, Science</h3><p class="sub">Major General Mahmudul Hasan Adarsha College, Tangail</p></div><time>Jun 2019 – Feb 2022</time><p class="note">GPA 5.00 / 5.00</p></div>
+      <div class="entry"><span class="tile" aria-hidden="true">PL</span><div><h3>Secondary School Certificate, Science</h3><p class="sub">Police Lines Adarsha High School, Tangail</p></div><time>Jan 2014 – May 2019</time></div>
+    </section>
+
+    <section id="skills">
+      <div class="sec-head"><h2>Skills</h2><p>What I use to build</p></div>
       <div class="toolkit">
         <div><h3>Programming</h3><ul><li>Python</li><li>C and C++</li><li>Java</li><li>JavaScript</li><li>SQL</li></ul></div>
         <div><h3>Machine learning</h3><ul><li>PyTorch</li><li>Deep learning</li><li>Computer vision</li><li>Natural language processing</li></ul></div>
@@ -263,7 +236,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
     </section>
 
     <section id="contact" class="contact">
-      <div class="sec-head"><h2>Contact</h2><p>Let's talk about machine learning, research or building software</p></div>
+      <div class="sec-head"><h2>Contact</h2><p>Say hello, or tell me about something you're building</p></div>
       <a class="btn solid" href="mailto:nafisneloy0509@gmail.com">nafisneloy0509@gmail.com</a>
       <div class="links">
         <a href="https://github.com/nafisiqbalneloy"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.05-.49.05-.49.8.06 1.23.83 1.23.83.72 1.22 1.88.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
