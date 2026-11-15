@@ -40,13 +40,18 @@ header.nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srg
 .nav nav a:hover { color: var(--ink); }
 #theme { background: none; border: 1px solid var(--line); color: var(--ink); border-radius: 99px; width: 34px; height: 34px; cursor: pointer; display: grid; place-items: center; }
 
-.hero { padding: 64px 0 48px; display: grid; grid-template-columns: 132px 1fr; gap: 28px; align-items: center; }
-.avatar { width: 132px; height: 132px; border-radius: 50%; object-fit: cover; background: var(--surface); }
-.where { color: var(--muted); font-size: .95rem; margin: 0 0 6px; }
-.hero h1 { font-size: clamp(2.3rem, 8vw, 4rem); font-weight: 800; letter-spacing: -.03em; }
-.role { font-weight: 600; margin: 8px 0 0; }
-.mission { color: var(--muted); margin: 10px 0 0; max-width: 34em; }
-.cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.hero { padding: 56px 0 44px; display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; }
+.hero-text { min-width: 0; }
+.photo { margin: 0; position: relative; justify-self: end; width: 100%; max-width: 380px; }
+.photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; border-radius: 28px; background: var(--surface); position: relative; z-index: 1; }
+.photo::before { content: ""; position: absolute; inset: 18px -18px -18px 18px; border-radius: 28px; background: var(--accent); z-index: 0; }
+.where { color: var(--muted); font-size: .95rem; margin: 0 0 10px; }
+.where::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-right: 8px; }
+.hero h1 { font-size: clamp(2.4rem, 7vw, 4.2rem); font-weight: 800; letter-spacing: -.035em; }
+.hero h1 span { display: block; color: var(--accent); }
+.role { font-weight: 600; margin: 14px 0 0; }
+.mission { color: var(--muted); margin: 10px 0 0; max-width: 30em; font-size: 1.05rem; }
+.cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
 .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 10px; font-weight: 600; text-decoration: none; border: 1px solid var(--ink); }
 .btn.solid { background: var(--btn); color: var(--btn-ink); }
 .btn:hover { opacity: .85; }
@@ -76,6 +81,19 @@ ul.plain li { margin: 5px 0; }
 .entry ul { grid-column: 2 / -1; margin: 8px 0 0; padding-left: 1.2em; color: var(--muted); }
 .entry .note { grid-column: 2 / -1; margin: 6px 0 0; color: var(--muted); }
 
+.rq { border: 1px solid var(--line); border-radius: 18px; padding: 28px; background: var(--surface); }
+.rq h3 { font-size: 1.4rem; font-weight: 700; }
+.rq .q { font: 700 1.15rem/1.4 var(--display); margin: 16px 0 6px; }
+.rq p { color: var(--muted); margin: 8px 0; }
+.forms { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 4px; }
+.forms span { display: flex; flex-direction: column; border: 1px solid var(--line); background: var(--bg); border-radius: 12px; padding: 10px 16px; min-width: 120px; }
+.forms b { font: 700 1.25rem var(--display); }
+.forms small { color: var(--muted); font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; }
+.flow { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; margin: 18px 0 0; font-size: .88rem; color: var(--muted); }
+.flow i { font-style: normal; background: var(--bg); border: 1px solid var(--line); border-radius: 99px; padding: 3px 12px; color: var(--ink); }
+.status { display: inline-block; font-size: .8rem; font-weight: 600; padding: 3px 12px; border-radius: 99px; background: var(--soft, #fff0e9); color: #b43a0a; margin-bottom: 12px; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .status { background: #2a1a12; color: #ff9a73; } }
+:root[data-theme="dark"] .status { background: #2a1a12; color: #ff9a73; }
 .cards { display: grid; gap: 16px; }
 .card { border: 1px solid var(--line); border-radius: 16px; padding: 24px; background: var(--surface); }
 .card h3 { font-size: 1.3rem; font-weight: 700; }
@@ -105,8 +123,8 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
 @media (max-width: 620px) {
   .nav nav { display: none; }
   #theme { margin-left: auto; }
-  .hero { grid-template-columns: 1fr; gap: 20px; padding-top: 40px; }
-  .avatar { width: 96px; height: 96px; }
+  .hero { grid-template-columns: 1fr; gap: 36px; padding-top: 32px; }
+  .photo { order: -1; justify-self: center; max-width: 300px; margin-right: 18px; }
   .entry { grid-template-columns: 40px 1fr; }
   .entry time { grid-column: 2; padding: 0; }
   .interests { grid-template-columns: 1fr; }
@@ -129,17 +147,18 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
 <main id="top">
   <div class="wrap">
     <div class="hero">
-      <img class="avatar" src="photo.jpg" alt="Portrait of Nafis Iqbal Neloy" width="132" height="132">
-      <div>
+      <div class="hero-text">
         <p class="where">Dhaka, Bangladesh</p>
-        <h1>Nafis Iqbal Neloy</h1>
-        <p class="role">CSE undergraduate · Artificial Intelligence and Data Science</p>
-        <p class="mission">I build and study machine learning systems, with a focus on making them robust and trustworthy.</p>
+        <h1>Nafis Iqbal <span>Neloy</span></h1>
+        <p class="role">CSE undergraduate · AI and Data Science · UIU</p>
+        <p class="mission">I study how poisoned knowledge can mislead retrieval-augmented language models, and whether defenses still work in Bangla and Banglish.</p>
         <div class="cta">
           <a class="btn solid" href="#contact">Get in touch</a>
+          <a class="btn" href="#research">My research</a>
           <a class="btn" href="https://github.com/nafisiqbalneloy">GitHub</a>
         </div>
       </div>
+      <figure class="photo"><img src="photo.jpg" alt="Portrait of Nafis Iqbal Neloy" width="720" height="925"></figure>
       <div class="currently">
         <span class="label">Currently</span>
         <span class="pill"><b>B.Sc. CSE</b> · United International University</span>
@@ -149,13 +168,13 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
 
     <section id="about" class="about">
       <div class="sec-head"><h2>About</h2><p>What I work on and why</p></div>
-      <h3>I like finding out how machine learning systems fail, and how to make them dependable.</h3>
-      <p>I am a Computer Science and Engineering student at UIU, majoring in Artificial Intelligence and Data Science. I started with image classification and now work on language models and AI security, including how retrieval-augmented systems can be misled by poisoned data.</p>
-      <p>Alongside research I build full-stack projects, from a farmer marketplace to a campus ride-sharing app, because a model only matters once someone can use it.</p>
+      <h3>Language models are only as trustworthy as the documents they read.</h3>
+      <p>I am a Computer Science and Engineering student at UIU, majoring in Artificial Intelligence and Data Science. My final year design project looks at what happens when the knowledge base behind a retrieval-augmented system is quietly corrupted, and whether detection methods built for English hold up for Bangla and Romanized Bangla.</p>
+      <p>Alongside research I build full-stack projects, from a farmer marketplace to a campus ride-sharing app, because ideas matter more once someone can use them.</p>
       <h3 class="sub-h">Research interests</h3>
       <div class="interests">
-        <ul class="plain"><li>Computer vision and image processing</li><li>Machine learning and deep learning</li><li>Natural language processing</li></ul>
-        <ul class="plain"><li>Trustworthy AI</li><li>Data poisoning</li><li>Retrieval-augmented generation (RAG)</li></ul>
+        <ul class="plain"><li>Knowledge-base poisoning in RAG</li><li>Poisoning detection and defense</li><li>AI security and adversarial machine learning</li></ul>
+        <ul class="plain"><li>Multilingual and low-resource NLP</li><li>Bangla and Romanized Bangla (Banglish)</li><li>Reproducible, honest evaluation</li></ul>
       </div>
     </section>
 
@@ -175,11 +194,19 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
     </section>
 
     <section id="research">
-      <div class="sec-head"><h2>Research</h2><p>Final year design project, in progress</p></div>
-      <div class="card">
-        <h3>Knowledge-base poisoning detection in multilingual RAG</h3>
-        <p>Retrieval-augmented generation systems trust the documents they retrieve, so a poisoned knowledge base can mislead them. My thesis direction studies whether existing poisoning defenses work equally well in English, Bangla and Romanized Bangla (Banglish).</p>
-        <ul><li>Status: literature review in progress, topic being finalised with my supervisor</li><li>Areas: AI security, adversarial machine learning, low-resource languages</li></ul>
+      <div class="sec-head"><h2>Research</h2><p>Final year design project</p></div>
+      <div class="rq">
+        <span class="status">In progress · literature review</span>
+        <h3>Poisoning detection in multilingual RAG</h3>
+        <p class="q">Do existing RAG poisoning defenses work equally well in English, Bangla and Banglish?</p>
+        <p>A retrieval-augmented system trusts the documents it finds. If an attacker slips misleading text into that knowledge base, the model can give wrong answers with confidence. Most defenses are tested in English only. The same word can be written in three ways, so language and script may change what gets retrieved and what gets caught.</p>
+        <div class="forms" aria-label="One word, three forms">
+          <span><b>good</b><small>English</small></span>
+          <span><b>ভালো</b><small>Bangla</small></span>
+          <span><b>bhalo / valo</b><small>Banglish</small></span>
+        </div>
+        <div class="flow" aria-label="Planned pipeline"><i>Clean RAG</i> → <i>Controlled poisoning</i> → <i>Retrieval</i> → <i>Detection</i> → <i>Evaluation</i></div>
+        <p style="margin-top:18px;font-size:.92rem">Final topic, datasets, attack and defense are still being chosen with our supervisor. This page will be updated as the work takes shape.</p>
       </div>
     </section>
 
