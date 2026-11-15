@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nafis Iqbal Neloy</title>
+<meta name="description" content="Portfolio of Nafis Iqbal Neloy, CSE undergraduate at UIU working on computer vision, NLP and full-stack projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: one calm column, big name, projects as an index list with a numbered rail. */
+:root {
+  --bg: #f5f6f8; --surface: #ffffff; --ink: #14181f; --muted: #5b6472; --line: #e2e5ea;
+  --accent: #ff5a1f; --accent-ink: #ffffff; --soft: #fff0e9;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #0e1116; --surface: #161a22; --ink: #eef0f4; --muted: #9aa3b2; --line: #262c37; --soft: #2a1a12; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --bg: #0e1116; --surface: #161a22; --ink: #eef0f4; --muted: #9aa3b2; --line: #262c37; --soft: #2a1a12; color-scheme: dark; }
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.6 var(--body); -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+.wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.1; margin: 0; text-wrap: balance; }
+
+header.nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.nav .wrap { display: flex; align-items: center; gap: 16px; height: 58px; }
+.logo { font: 800 1.05rem var(--display); text-decoration: none; }
+.logo span { color: var(--accent); }
+.nav nav { margin-left: auto; display: flex; gap: 18px; font-size: .92rem; }
+.nav nav a { text-decoration: none; color: var(--muted); }
+.nav nav a:hover { color: var(--ink); }
+#theme { background: none; border: 1px solid var(--line); color: var(--ink); border-radius: 99px; width: 36px; height: 36px; cursor: pointer; font-size: 1rem; }
+
+.hero { padding: 72px 0 56px; }
+.hello { color: var(--accent); font-weight: 600; margin: 0 0 14px; }
+.hero h1 { font-size: clamp(2.6rem, 9vw, 5rem); font-weight: 800; letter-spacing: -.03em; }
+.hero p.lead { font-size: clamp(1.1rem, 2.4vw, 1.35rem); color: var(--muted); max-width: 34em; margin: 22px 0 0; }
+.hero p.lead b { color: var(--ink); font-weight: 600; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-weight: 600; text-decoration: none; border: 1px solid var(--line); background: var(--surface); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn:hover { transform: translateY(-1px); }
+.facts { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 34px 0 0; padding: 0; list-style: none; color: var(--muted); font-size: .95rem; }
+.facts li::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); margin-right: 8px; }
+
+section { padding: 56px 0; border-top: 1px solid var(--line); }
+.sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 28px; }
+.sec-head h2 { font-size: 1.9rem; font-weight: 700; }
+.sec-head span { color: var(--muted); font-size: .95rem; }
+
+.projects { display: grid; gap: 16px; }
+.project { display: grid; grid-template-columns: 56px 1fr; gap: 6px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
+.project .num { font: 800 1.6rem var(--display); color: var(--accent); }
+.project h3 { font-size: 1.35rem; font-weight: 700; }
+.project p { margin: 8px 0 0; color: var(--muted); }
+.project .meta { grid-column: 2; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 14px; }
+.tag { font-size: .8rem; padding: 3px 10px; border-radius: 99px; background: var(--soft); color: var(--accent); font-weight: 600; }
+.project a.go { margin-left: auto; font-weight: 600; text-decoration: none; color: var(--ink); border-bottom: 2px solid var(--accent); }
+.stat { font-weight: 700; color: var(--ink); }
+
+.thesis { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
+.thesis h3 { margin-bottom: 10px; }
+.thesis p { margin: 0 0 10px; color: var(--muted); }
+.thesis p:last-child { margin: 0; }
+
+.skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+@media (max-width: 560px) { .skills { grid-template-columns: 1fr; } }
+.skill-card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 20px; }
+.skill-card h3 { font-size: 1rem; margin-bottom: 12px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips span { font-size: .88rem; padding: 4px 12px; border-radius: 99px; border: 1px solid var(--line); }
+
+.timeline { display: grid; gap: 14px; }
+.row { display: grid; grid-template-columns: 140px 1fr; gap: 16px; }
+.row time { color: var(--muted); font-size: .92rem; padding-top: 2px; }
+.row h3 { font-size: 1.1rem; }
+.row p { margin: 4px 0 0; color: var(--muted); }
+
+.contact { text-align: left; }
+.contact p { color: var(--muted); max-width: 32em; margin: 0 0 22px; }
+footer { padding: 28px 0 60px; color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line); }
+
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+@media (max-width: 560px) {
+  .nav nav { display: none; }
+  #theme { margin-left: auto; }
+  .row { grid-template-columns: 1fr; gap: 2px; }
+  .project { grid-template-columns: 1fr; }
+  .project .meta { grid-column: 1; }
+  .project a.go { margin-left: 0; }
+  .hero { padding-top: 48px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn:hover { transform: none; } }
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top">Neloy<span>.</span></a>
+    <nav aria-label="Sections">
+      <a href="#projects">Projects</a><a href="#research">Research</a><a href="#skills">Skills</a><a href="#journey">Journey</a><a href="#contact">Contact</a>
+    </nav>
+    <button id="theme" type="button" aria-label="Switch colour theme"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg></button>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+    <div class="hero">
+      <p class="hello">Hi, I'm</p>
+      <h1>Nafis Iqbal Neloy</h1>
+      <p class="lead">CSE undergraduate at <b>United International University</b>. I build <b>computer vision</b> and <b>language</b> models, and the full-stack apps around them, from the first idea to something people can use.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">See my projects</a>
+        <a class="btn" href="https://github.com/nafisiqbalneloy">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/nafisiqbalneloy/">LinkedIn</a>
+      </div>
+      <ul class="facts">
+        <li>Dhaka, Bangladesh</li>
+        <li>Deep learning, NLP, AI security</li>
+        <li>English and Bangla</li>
+      </ul>
+    </div>
+
+    <section id="projects">
+      <div class="sec-head"><h2>Projects</h2><span>Each one is a public repo with a README</span></div>
+      <div class="projects">
+        <article class="project">
+          <div class="num">01</div>
+          <div>
+            <h3>Garbage Classification</h3>
+            <p>Fine-tuned EfficientNet-B6 that sorts waste photos into 10 classes, with a Gradio demo anyone can try.</p>
+          </div>
+          <div class="meta"><span class="stat">94.18% test accuracy</span><span class="tag">PyTorch</span><span class="tag">Gradio</span><span class="tag">Computer vision</span>
+            <a class="go" href="https://github.com/nafisiqbalneloy/Garbage-Classification-Using-Deep-Learning">View repo →</a></div>
+        </article>
+        <article class="project">
+          <div class="num">02</div>
+          <div>
+            <h3>CampusCruise</h3>
+            <p>Students-only bike ride-sharing for UIU. Started as a full SRS and Figma prototype, now a working app: verified accounts, ride posting and matching, driver approval, fare chat, ratings and an admin dashboard. No third-party dependencies, 11 API tests.</p>
+          </div>
+          <div class="meta"><span class="tag">Node.js</span><span class="tag">SQLite</span><span class="tag">REST API</span><span class="tag">SRS + Figma</span>
+            <a class="go" href="https://github.com/nafisiqbalneloy/CampusCruise">View repo →</a></div>
+        </article>
+        <article class="project">
+          <div class="num">03</div>
+          <div>
+            <h3>CropVerse</h3>
+            <p>A farmer-to-buyer marketplace with chat, disease alerts and price trends, built around relational design: database triggers and transactions keep orders consistent.</p>
+          </div>
+          <div class="meta"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">MySQL</span>
+            <a class="go" href="https://github.com/nafisiqbalneloy/CropVerse">View repo →</a></div>
+        </article>
+        <article class="project">
+          <div class="num">04</div>
+          <div>
+            <h3>GaanBox</h3>
+            <p>Share a song and the story behind it. A shared community feed with likes and reports, light and dark themes, ES-module front end and an automated test suite.</p>
+          </div>
+          <div class="meta"><span class="tag">JavaScript</span><span class="tag">Node.js</span><span class="tag">node:test</span>
+            <a class="go" href="https://github.com/nafisiqbalneloy/GaanBox">View repo →</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="sec-head"><h2>Research</h2><span>Final year design project, in progress</span></div>
+      <div class="thesis">
+        <h3>Poisoning detection in multilingual RAG</h3>
+        <p>Retrieval-augmented generation systems trust the documents they retrieve. My thesis group studies how a poisoned knowledge base can mislead them, and how to detect it across English, Bangla and Banglish.</p>
+        <p>Interests: robustness of language models, low-resource languages, AI security.</p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="sec-head"><h2>Skills</h2></div>
+      <div class="skills">
+        <div class="skill-card"><h3>Machine learning</h3><div class="chips"><span>Python</span><span>PyTorch</span><span>Computer vision</span><span>NLP</span><span>Model fine-tuning</span></div></div>
+        <div class="skill-card"><h3>Web and backend</h3><div class="chips"><span>JavaScript</span><span>Node.js</span><span>Express</span><span>HTML and CSS</span><span>REST APIs</span></div></div>
+        <div class="skill-card"><h3>Data and tools</h3><div class="chips"><span>MySQL</span><span>SQLite</span><span>Git and GitHub</span><span>Linux</span><span>Figma</span></div></div>
+        <div class="skill-card"><h3>Core CS</h3><div class="chips"><span>C++</span><span>C</span><span>Java</span><span>Data structures</span><span>Algorithms</span></div></div>
+      </div>
+    </section>
+
+    <section id="journey">
+      <div class="sec-head"><h2>Journey</h2></div>
+      <div class="timeline">
+        <div class="row"><time>Nov 2026</time><div><h3>Sales Executive, Intelio Labs</h3><p>Joining a Dhaka software startup to help clients adopt web, software and AI solutions.</p></div></div>
+        <div class="row"><time>2026</time><div><h3>Final year design project</h3><p>Researching poisoning detection in multilingual RAG systems.</p></div></div>
+        <div class="row"><time>Ongoing</time><div><h3>BSc in Computer Science and Engineering</h3><p>United International University, Dhaka. Coursework in networks, AI, software engineering and embedded systems.</p></div></div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="sec-head"><h2>Let's talk</h2></div>
+      <p>Open to conversations about machine learning, research and building useful software. The best way to reach me is on LinkedIn.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://www.linkedin.com/in/nafisiqbalneloy/">Message on LinkedIn</a>
+        <a class="btn" href="https://github.com/nafisiqbalneloy">github.com/nafisiqbalneloy</a>
+      </div>
+    </section>
+  </div>
+</main>
+<footer><div class="wrap">© <span id="yr">2026</span> Nafis Iqbal Neloy · Dhaka, Bangladesh</div></footer>
+
+<script>
+(function () {
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var root = document.documentElement, btn = document.getElementById('theme');
+  try { var saved = localStorage.getItem('theme'); if (saved) root.dataset.theme = saved; } catch (e) {}
+  btn.addEventListener('click', function () {
+    var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = dark ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>
