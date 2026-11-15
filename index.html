@@ -42,9 +42,9 @@ header.nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srg
 
 .hero { padding: 56px 0 44px; display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; }
 .hero-text { min-width: 0; }
-.photo { margin: 0; position: relative; justify-self: end; width: 100%; max-width: 380px; }
-.photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; border-radius: 28px; background: var(--surface); position: relative; z-index: 1; }
-.photo::before { content: ""; position: absolute; inset: 18px -18px -18px 18px; border-radius: 28px; background: var(--accent); z-index: 0; }
+.photo { margin: 0; position: relative; justify-self: end; width: 100%; max-width: 320px; }
+.photo img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; object-position: 50% 32%; border-radius: 28px; background: var(--surface); position: relative; z-index: 1; }
+.photo::before { content: ""; position: absolute; inset: 12px -12px -12px 12px; border-radius: 28px; background: var(--accent); z-index: 0; }
 .where { color: var(--muted); font-size: .95rem; margin: 0 0 10px; }
 .where::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-right: 8px; }
 .hero h1 { font-size: clamp(2.4rem, 7vw, 4.2rem); font-weight: 800; letter-spacing: -.035em; }
@@ -74,7 +74,8 @@ ul.plain li { margin: 5px 0; }
 
 .entry { display: grid; grid-template-columns: 52px 1fr auto; gap: 4px 18px; padding: 22px 0; border-top: 1px solid var(--line); }
 .entry:first-of-type { border-top: 0; padding-top: 0; }
-.entry .no { font: 800 1.3rem var(--display); color: var(--muted); }
+.entry .tile { width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; background: var(--surface); border: 1px solid var(--line); font: 800 .95rem var(--display); letter-spacing: -.02em; color: var(--ink); }
+.entry:first-of-type .tile, .entry:nth-of-type(1) .tile { }
 .entry h3 { font-size: 1.2rem; font-weight: 700; }
 .entry .sub { color: var(--muted); margin: 2px 0 0; }
 .entry time { color: var(--muted); font-size: .9rem; white-space: nowrap; padding-top: 4px; }
@@ -124,7 +125,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
   .nav nav { display: none; }
   #theme { margin-left: auto; }
   .hero { grid-template-columns: 1fr; gap: 36px; padding-top: 32px; }
-  .photo { order: -1; justify-self: center; max-width: 300px; margin-right: 18px; }
+  .photo { order: -1; justify-self: center; max-width: 240px; margin-right: 12px; }
   .entry { grid-template-columns: 40px 1fr; }
   .entry time { grid-column: 2; padding: 0; }
   .interests { grid-template-columns: 1fr; }
@@ -180,16 +181,16 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
 
     <section id="education">
       <div class="sec-head"><h2>Education</h2><p>Where I studied</p></div>
-      <div class="entry"><span class="no">01</span><div><h3>B.Sc. in Computer Science and Engineering</h3><p class="sub">United International University, Dhaka · Major in Artificial Intelligence and Data Science</p></div><time>Sep 2023 – Present</time><p class="note">CGPA 3.70 / 4.00</p></div>
-      <div class="entry"><span class="no">02</span><div><h3>Higher Secondary Certificate, Science</h3><p class="sub">Major General Mahmudul Hasan Adarsha College, Tangail</p></div><time>Jun 2019 – Feb 2022</time><p class="note">GPA 5.00 / 5.00</p></div>
-      <div class="entry"><span class="no">03</span><div><h3>Secondary School Certificate, Science</h3><p class="sub">Police Lines Adarsha High School, Tangail</p></div><time>Jan 2014 – May 2019</time></div>
+      <div class="entry"><span class="tile" aria-hidden="true">UIU</span><div><h3>B.Sc. in Computer Science and Engineering</h3><p class="sub">United International University, Dhaka · Major in Artificial Intelligence and Data Science</p></div><time>Sep 2023 – Present</time><p class="note">CGPA 3.70 / 4.00</p></div>
+      <div class="entry"><span class="tile" aria-hidden="true">MG</span><div><h3>Higher Secondary Certificate, Science</h3><p class="sub">Major General Mahmudul Hasan Adarsha College, Tangail</p></div><time>Jun 2019 – Feb 2022</time><p class="note">GPA 5.00 / 5.00</p></div>
+      <div class="entry"><span class="tile" aria-hidden="true">PL</span><div><h3>Secondary School Certificate, Science</h3><p class="sub">Police Lines Adarsha High School, Tangail</p></div><time>Jan 2014 – May 2019</time></div>
     </section>
 
     <section id="experience">
       <div class="sec-head"><h2>Experience</h2><p>Where I have worked</p></div>
-      <div class="entry"><span class="no">01</span><div><h3>Sales Executive</h3><p class="sub">Intelio Labs, software startup · Remote</p></div><time>Nov 2026 – Present</time>
+      <div class="entry"><span class="tile" aria-hidden="true">IL</span><div><h3>Sales Executive</h3><p class="sub">Intelio Labs, software startup · Remote</p></div><time>Nov 2026 – Present</time>
         <ul><li>Identify and qualify prospects for web, software and AI projects.</li><li>Present product demos and prepare proposals for clients.</li></ul></div>
-      <div class="entry"><span class="no">02</span><div><h3>Senior Executive of Branding</h3><p class="sub">UIU Entrepreneur Development Forum, Dhaka</p></div><time>Jun 2024 – Jan 2025</time>
+      <div class="entry"><span class="tile" aria-hidden="true">ED</span><div><h3>Senior Executive of Branding</h3><p class="sub">UIU Entrepreneur Development Forum, Dhaka</p></div><time>Jun 2024 – Jan 2025</time>
         <ul><li>Contributed to branding strategy, communication and the club's visibility on campus.</li><li>Supported marketing initiatives for club events.</li></ul></div>
     </section>
 
